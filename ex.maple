@@ -1,0 +1,45 @@
+read "load.maple";
+
+
+InputMat := inputmat(Lv, Ld, p, q, bF):
+
+StartMat := startmat(Lv, Ld, p, q, bF):
+
+HomoMat := (1-T)*StartMat + T*InputMat:
+
+fc := factor_diag(StartMat):
+
+rd := reduce_var_list(fc[1], bF):
+
+FD := factor_diag(StartMat):
+
+#DEM := reduce_dim_startmat(StartMat, bF):
+
+LP:= reduce_form(StartMat, m, FD, bF,  2):
+
+N := LP[1][1]:
+
+HOM := homotopy(InputMat, bF):
+
+
+linear_equas := proc(A, kd, q)
+   	     local L, i, R, Lv, eqs;
+
+	     Lv := [op(indets(A[kd, kd]))];
+	     
+   	     L := [];
+   	     for i from 1 to q do:
+       	     	 L := [op(L), A[kd, i]];
+   	     end do; 
+
+   	     R := remove(t -> t = 0, L);
+
+	     return R; 
+	     eqs := [seq(R[i] = 0, i = 1..nops(R))];
+	     
+	     return eqs, Lv;
+   
+end proc;
+
+
+L := linear_equas(StartMat, 3, q); 
