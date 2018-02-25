@@ -1,0 +1,31 @@
+homotopy_diagonal  := proc(N, bF)
+		   local k;
+
+end proc;
+
+
+homotopy := proc(N, bF)
+	 local LV, M, D, nr, nc;
+
+	 local i, H;
+	 
+	 LV := [op(indets(N[1, 1]))];
+
+	 nr := RowDimension(N);
+
+	 nc := ColumnDimension(N);
+
+	 D := [];
+	 for i from 1 to nr do:
+	     D := [op(D), degree(N[i, i])];
+	 end do;
+	 
+	 M := startmat(LV, D, nr, nc, bF);
+
+	 H := (1-T)*M + T*N;
+
+end proc;
+
+
+
+
