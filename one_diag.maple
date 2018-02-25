@@ -1,0 +1,6 @@
+### Input: a diagonal matrix, DA := list of A[i, i]
+
+### Output: a zero-dim para for the case only one entry on the dialgonal = 0
+
+diagonal_one := proc(A, L)
+end proc; 
