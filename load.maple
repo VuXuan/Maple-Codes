@@ -1,0 +1,7 @@
+read "data.maple";
+
+read "reduce_startmat.maple";
+
+read "one_diag.maple"; 
+
+read "homotopy.maple"; 
